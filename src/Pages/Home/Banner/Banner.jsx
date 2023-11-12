@@ -12,7 +12,7 @@ import '../Banner/Banner.css'
 const Banner = () => {
     return (
         <div className="">
-            <Carousel showArrows={true} autoPlay={true}>
+            <Carousel showArrows={true} autoPlay={true} infiniteLoop={true}>
                 <div>
                     <img className="md:max-h-screen" src={img1} />
                 </div>
