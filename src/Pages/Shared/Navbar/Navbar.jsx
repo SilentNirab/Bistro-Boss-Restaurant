@@ -1,9 +1,11 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { CiShoppingCart } from "react-icons/ci";
+import useCart from "../../../Hooks/useCart";
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [cart] = useCart();
 
     const handelLogout = () => {
         logOut()
@@ -18,10 +20,10 @@ const Navbar = () => {
                 <li className="text-white"><NavLink to={'/login'}>Login</NavLink></li>
         }
         <li className="">
-            <button className="btn capitalize hover:text-white">
+            <Link to={'/dashboard/cart'} className="btn capitalize hover:text-white">
                 <CiShoppingCart className="text-2xl" />
-                <div className="badge badge-secondary">+99</div>
-            </button>
+                <div className="badge badge-secondary">+{cart.length}</div>
+            </Link>
         </li>
 
     </>

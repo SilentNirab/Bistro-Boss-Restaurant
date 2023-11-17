@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Helmet } from 'react-helmet';
+import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
@@ -37,7 +38,7 @@ const Login = () => {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 });
-                navigate(from, { replace: true });
+                navigate(from,  { replace: true });
             })
     }
 
@@ -91,6 +92,7 @@ const Login = () => {
                             </div>
                         </form>
                         <p><small>New Here? <Link to="/signup">Create an account</Link> </small></p>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
