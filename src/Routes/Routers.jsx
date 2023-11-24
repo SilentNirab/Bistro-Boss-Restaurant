@@ -11,6 +11,8 @@ import PrivetRoute from "./PrivetRoute";
 import AllUsers from "../Pages/Dashboard/AllUsers";
 import AdminRouter from "./AdminRouter";
 import AddItems from "../Pages/Dashboard/AddItems/AddItems";
+import ManageItems from "../Pages/Dashboard/ManageItems/ManageItems";
+import UpdateItem from "../Pages/Dashboard/UpdateItems/UpdateItems";
 
 export const router = createBrowserRouter([
   {
@@ -52,7 +54,15 @@ export const router = createBrowserRouter([
         path: 'addItems',
         element: <AdminRouter><AddItems></AddItems></AdminRouter>
       },
-      //admin routes
+      {
+        path: 'manageItems',
+        element: <AdminRouter><ManageItems></ManageItems></AdminRouter>
+      },
+      {
+        path: 'updateItem/:id',
+        element: <AdminRouter><UpdateItem></UpdateItem></AdminRouter>,
+        loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+      },
       {
         path: 'users',
         element: <AdminRouter><AllUsers></AllUsers></AdminRouter>
